@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class TaskProvider {
-  static const baseUrl = "https://task-manager-backend-7j1a.onrender.com";
+  static const baseUrl = "https://task-management-hwld.onrender.com";
 
   Future<http.Response> fetchTasks({
     required String token,

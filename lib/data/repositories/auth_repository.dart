@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
-
 import '../providers/auth_provider.dart';
 
 class AuthRepository {
@@ -12,6 +10,7 @@ class AuthRepository {
   Future<bool> login(String email, String password) async {
     final response = await authProvider.login(email, password);
 
+    print(response);
     // Expecting: { success, message, data: { accessToken, refreshToken } }
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body);
@@ -35,6 +34,7 @@ class AuthRepository {
   Future<bool> register(String name, String email, String password) async {
     final response = await authProvider.register(name, email, password);
 
+    print(response);
     // Accept 201 or 200 as success (backend-dependent)
     return response.statusCode == 201 || response.statusCode == 200;
   }
